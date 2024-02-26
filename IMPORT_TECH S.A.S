@@ -174,3 +174,23 @@ VALUES
 
 ALTER TABLE import_tech.ventas MODIFY fecha DATETIME NOT NULL;
 use import_tech
+
+-- ------------------------------------------ --
+-- SOLUCION DEL ERROR DE COMPRA DEL CLIENTE--
+-- ------------------------------------------ --
+-- ------------------------------------------------------------ --
+-- PRUEBA INSERT DATES IN TABLE VENTAS V3-- 'EL MISMO CLIENTE'
+-- ------------------------------------------------------------ --
+
+INSERT INTO ventas (id_factura, fecha, id_cliente, descuento, monto_final)
+VALUES 
+(101100, current_timestamp(), 1006, 6000, 120000);
+
+-- ----------------------------------- --
+--   ARAY IN THE TABLES TO DATABASE   --
+-- ----------------------------------- --
+use import_tech;
+ALTER TABLE ventas
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (id_factura, id_cliente);
+SELECT * FROM  ventas;
